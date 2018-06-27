@@ -119,6 +119,7 @@ private:
   {
     GMenu* menu;
     GMenuItem* menu_item;
+    GMenuItem* menu_second_item;
 
     menu = g_menu_new();
 
@@ -126,6 +127,11 @@ private:
     g_menu_item_set_attribute(menu_item, "x-canonical-type", "s", "com.canonical.indicator.switch");
     g_menu_append_item(menu, menu_item);
     g_object_unref(menu_item);
+    
+    menu_second_item = g_menu_item_new(_("Manual Rotation"), "indicator.manual-rotation");
+    g_menu_item_set_attribute(menu_second_item, "x-canonical-type", "s", "com.canonical.indicator.switch");
+    g_menu_append_item(menu, menu_second_item);
+    g_object_unref(menu_second_item);
 
     return G_MENU_MODEL(menu);
   }
